@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gabrieli Rizzi - Arquitetura e Interiores</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Menu topo -->
+  <header class="top-header">
+    <div class="logo">Gabrieli Rizzi</div>
+    <nav>
+      <ul>
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#historia">História</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#artigos">Artigos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Banner principal -->
+  <section class="banner" id="inicio">
+    <div class="banner-text">
+      <h1>Gabrieli Rizzi - Arquitetura e Interiores</h1>
+    </div>
+  </section>
+
+  <!-- Destaques -->
+  <section class="destaques">
+    <div class="card-destaque">
+      <img src="img/interiores.jpg" alt="Interiores" />
+      <div class="overlay">Interiores que inspiram</div>
+    </div>
+    <div class="card-destaque">
+      <img src="img/residencial.jpg" alt="Residencial" />
+      <div class="overlay">Design Residencial</div>
+    </div>
+    <div class="card-destaque">
+      <img src="img/comercial.jpg" alt="Comercial" />
+      <div class="overlay">Espaços Comerciais</div>
+    </div>
+    <div class="card-destaque">
+      <img src="img/sustentavel.jpg" alt="Sustentável" />
+      <div class="overlay">Projetos Sustentáveis</div>
+    </div>
+  </section>
+
+  <!-- Seção História -->
+  <section id="historia" class="secao">
+    <h2>Minha Trajetória</h2>
+    <p>Com uma carreira dedicada à transformação de espaços, Gabrieli Rizzi tem mais de 10 anos de experiência em projetos residenciais, comerciais e de interiores. Sua abordagem une funcionalidade, estética e sustentabilidade.</p>
+  </section>
+
+  <!-- Seção Projetos com carrossel -->
+  <section id="projetos" class="secao">
+    <h2>Portfólio de Projetos</h2>
+    <div class="carousel-container">
+      <button class="carousel-btn" onclick="scrollCarousel(-1)">&#10094;</button>
+      <div class="carousel" id="carousel-projetos">
+        <div class="card" onclick="abrirModal('projeto1')">
+          <img src="img/projeto1.jpg" alt="Projeto 1" />
+          <h3>Residência no Campo</h3>
+        </div>
+        <div class="card" onclick="abrirModal('projeto2')">
+          <img src="img/projeto2.jpg" alt="Projeto 2" />
+          <h3>Studio Urbano</h3>
+        </div>
+        <div class="card" onclick="abrirModal('projeto3')">
+          <img src="img/projeto3.jpg" alt="Projeto 3" />
+          <h3>Escritório Criativo</h3>
+        </div>
+        <div class="card" onclick="abrirModal('projeto4')">
+          <img src="img/projeto4.jpg" alt="Projeto 4" />
+          <h3>Loja Sustentável</h3>
+        </div>
+      </div>
+      <button class="carousel-btn" onclick="scrollCarousel(1)">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- Seção Artigos -->
+  <section id="artigos" class="secao artigos">
+    <h2>Publicações Recentes</h2>
+    <div class="artigos-grid">
+      <div class="artigo">
+        <img src="img/artigo1.jpg" alt="Artigo 1">
+        <h4>Tendências em Decoração</h4>
+        <p>Conheça as principais tendências para interiores contemporâneos.</p>
+      </div>
+      <div class="artigo">
+        <img src="img/artigo2.jpg" alt="Artigo 2">
+        <h4>Arquitetura Sustentável</h4>
+        <p>Como aliar estética e eficiência energética nos seus projetos.</p>
+      </div>
+      <div class="artigo">
+        <img src="img/artigo3.jpg" alt="Artigo 3">
+        <h4>Design Biofílico</h4>
+        <p>Conexão com a natureza dentro de ambientes urbanos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção Contato -->
+  <section id="contato" class="secao">
+    <h2>Entre em Contato</h2>
+    <form>
+      <input type="text" placeholder="Nome completo" required>
+      <input type="email" placeholder="Seu e-mail" required>
+      <textarea placeholder="Mensagem" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <!-- Rodapé -->
+  <footer>
+    <div class="redes-sociais">
+      <a href="#">Instagram</a>
+      <a href="#">Pinterest</a>
+      <a href="#">LinkedIn</a>
+    </div>
+    <p>&copy; 2025 Gabrieli Rizzi. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Modal de projeto -->
+  <div id="modalProjeto" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="fecharModal()">&times;</span>
+      <img id="modalImagem" src="" alt="Imagem do projeto">
+      <h3 id="modalTitulo"></h3>
+      <p id="modalDescricao">Texto descritivo do projeto.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
