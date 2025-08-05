@@ -1,11 +1,13 @@
+/* === GOOGLE FONTS === */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap');
+
 :root {
   --marrom: #5c4033;
-  --bege: #f5f0e6;
+  --bege-claro: #f9f6f1;
   --verde: #7a9e7e;
-  --cinza: #eeeeee;
   --branco: #ffffff;
-  --preto: #222;
-  --sombra: rgba(0,0,0,0.1);
+  --cinza: #eae7e2;
+  --sombra: rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -14,220 +16,181 @@
   box-sizing: border-box;
 }
 
-html, body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: var(--bege);
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, var(--bege-claro), var(--branco));
   color: var(--marrom);
-  line-height: 1.6;
+  min-height: 100vh;
+  padding-left: 240px; /* espaço para menu lateral */
 }
 
-/* Cabeçalho fixo */
-header {
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+}
+
+/* === MENU LATERAL RETRÁTIL === */
+.sidebar {
   position: fixed;
   top: 0;
-  width: 100%;
+  left: 0;
+  height: 100%;
+  width: 220px;
   background-color: var(--marrom);
-  color: var(--bege);
-  padding: 15px 30px;
+  color: var(--branco);
+  padding: 20px;
+  transition: transform 0.3s ease;
   z-index: 999;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 5px var(--sombra);
 }
 
-header h1 {
+.sidebar h2 {
   font-size: 1.5rem;
+  margin-bottom: 20px;
 }
 
-header nav a {
-  color: var(--bege);
+.sidebar a {
+  display: block;
+  color: var(--branco);
   text-decoration: none;
-  margin-left: 25px;
-  font-weight: bold;
+  margin: 15px 0;
+  font-size: 1rem;
   transition: color 0.3s;
 }
 
-header nav a:hover {
+.sidebar a:hover {
   color: var(--verde);
 }
 
-/* Banner principal */
-#banner {
+.menu-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: var(--verde);
+  color: var(--branco);
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 1000;
+  font-size: 1.2rem;
+  border-radius: 4px;
+}
+
+.sidebar.retratil {
+  transform: translateX(-100%);
+}
+
+/* === BANNER PRINCIPAL === */
+.banner {
   height: 100vh;
   background: url('img/banner.jpg') center/cover no-repeat;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: var(--bege);
-  padding-top: 80px;
+  color: var(--bege-claro);
+  padding: 40px;
   position: relative;
 }
 
-#banner::after {
+.banner::after {
   content: '';
   position: absolute;
   inset: 0;
-  background-color: rgba(92, 64, 51, 0.5);
+  background-color: rgba(92, 64, 51, 0.6);
 }
 
-#banner h2, #banner p {
+.banner h1 {
   position: relative;
+  font-size: 3.5rem;
+  text-shadow: 2px 2px 5px #000;
   z-index: 1;
 }
 
-#banner h2 {
-  font-size: 4rem;
-  text-shadow: 2px 2px 5px var(--preto);
+.banner p {
+  position: relative;
+  font-size: 1.3rem;
+  z-index: 1;
+  margin-top: 10px;
 }
 
-#banner p {
-  font-size: 1.5rem;
-  margin-top: 20px;
-}
-
-/* Seções */
+/* === SEÇÕES GERAIS === */
 section {
-  padding: 80px 20px;
+  padding: 80px 30px;
   max-width: 1200px;
   margin: auto;
 }
 
 section h2 {
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   margin-bottom: 30px;
   color: var(--marrom);
-  border-bottom: 3px solid var(--verde);
+  border-bottom: 2px solid var(--verde);
   display: inline-block;
 }
 
-/* Cards de destaque */
-.destaques {
-  display: flex;
+/* === PORTFÓLIO === */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
-  flex-wrap: wrap;
-  margin-top: 20px;
 }
 
-.card-destaque {
-  position: relative;
-  flex: 1 1 250px;
-  overflow: hidden;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.card-destaque img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.card-destaque:hover img {
-  transform: scale(1.05);
-}
-
-.card-destaque .texto {
-  position: absolute;
-  bottom: 0;
-  background: linear-gradient(to top, rgba(92, 64, 51, 0.8), transparent);
-  color: var(--bege);
-  width: 100%;
-  padding: 20px;
-}
-
-/* Carrossel horizontal */
-.carousel-container {
-  position: relative;
-  overflow: hidden;
-}
-
-.carousel {
-  display: flex;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  gap: 20px;
-  padding: 20px 0;
-}
-
-.carousel::-webkit-scrollbar {
-  display: none;
-}
-
-.carousel-card {
-  flex: 0 0 auto;
-  width: 280px;
-  background: var(--branco);
-  border-radius: 10px;
-  box-shadow: 0 4px 10px var(--sombra);
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.carousel-card:hover {
-  transform: translateY(-5px);
-}
-
-.carousel-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.carousel-card h3 {
-  padding: 15px;
-  font-size: 1.2rem;
-}
-
-/* Modal */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modal-content {
-  background: var(--branco);
-  padding: 30px;
-  border-radius: 10px;
-  max-width: 600px;
-  width: 90%;
-  position: relative;
-}
-
-.modal-content img {
-  width: 100%;
+.portfolio-grid .item {
+  background-color: var(--branco);
   border-radius: 8px;
-}
-
-.modal-content h3 {
-  margin-top: 20px;
-}
-
-.modal-content p {
-  margin-top: 10px;
-}
-
-.modal .close {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 28px;
-  color: var(--preto);
+  overflow: hidden;
+  box-shadow: 0 2px 8px var(--sombra);
+  transition: transform 0.3s ease;
   cursor: pointer;
 }
 
-/* Formulário */
+.portfolio-grid .item:hover {
+  transform: scale(1.02);
+}
+
+.portfolio-grid img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.portfolio-grid h4 {
+  padding: 10px;
+  font-size: 1rem;
+  color: var(--marrom);
+}
+
+/* === ARTIGOS RECENTES === */
+.artigos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.artigo {
+  background-color: var(--branco);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px var(--sombra);
+}
+
+.artigo img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.artigo h4 {
+  font-size: 1rem;
+  padding: 10px;
+}
+
+.artigo p {
+  font-size: 0.9rem;
+  padding: 0 10px 10px;
+  color: #555;
+}
+
+/* === FORMULÁRIO === */
 form {
   display: flex;
   flex-direction: column;
@@ -236,16 +199,16 @@ form {
 
 form input, form textarea {
   padding: 10px;
-  border: 1px solid var(--marrom);
-  border-radius: 5px;
   font-size: 1rem;
+  border: 1px solid var(--cinza);
+  border-radius: 5px;
 }
 
 form button {
-  background: var(--verde);
+  background-color: var(--verde);
   color: var(--branco);
-  padding: 10px;
   border: none;
+  padding: 12px;
   font-size: 1rem;
   border-radius: 5px;
   cursor: pointer;
@@ -253,53 +216,41 @@ form button {
 }
 
 form button:hover {
-  background: var(--marrom);
+  background-color: var(--marrom);
 }
 
-/* Grade de posts */
-.grid-posts {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 25px;
+/* === RODAPÉ === */
+footer {
+  background-color: var(--marrom);
+  color: var(--bege-claro);
+  text-align: center;
+  padding: 30px;
+  margin-top: 60px;
+  font-size: 0.9rem;
 }
 
-.grid-posts .post {
-  background: var(--branco);
-  box-shadow: 0 2px 6px var(--sombra);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.grid-posts .post img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-}
-
-.grid-posts .post h4 {
-  padding: 15px;
-  font-size: 1.1rem;
-}
-
-/* Redes sociais */
-.social-links a {
-  color: var(--marrom);
-  margin-right: 20px;
-  font-weight: bold;
+footer a {
+  color: var(--bege-claro);
   text-decoration: none;
-  font-size: 1.1rem;
+  margin: 0 10px;
   transition: color 0.3s;
 }
 
-.social-links a:hover {
+footer a:hover {
   color: var(--verde);
 }
 
-/* Rodapé */
-footer {
-  background: var(--marrom);
-  color: var(--bege);
-  text-align: center;
-  padding: 30px;
-  font-size: 0.9rem;
+/* === RESPONSIVIDADE === */
+@media (max-width: 768px) {
+  body {
+    padding-left: 0;
+  }
+
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.ativa {
+    transform: translateX(0);
+  }
 }
